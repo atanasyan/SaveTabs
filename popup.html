@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<style>
+body {
+  margin: 0;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-item {
+  background: white;
+  color: black;
+  cursor: default;
+
+  padding: 5px;
+  width: 100px;
+  height: 15px;
+  margin-top: 0;
+
+  list-style: none;
+  font-family: 'Segoe UI';  
+  font-size: 10pt;
+  text-align: left;
+}
+
+.flex-item:hover {
+  background-color: #cccccc;
+}
+
+#urls {
+  padding: 10px;
+  display: none;
+}
+
+</style>
+
+<script src="popup.js"></script>
+
+</head>
+
+<body>
+  <div id="menu" class="flex-container">
+    <div id="copy" class="flex-item">Copy tabs</div>
+    <div id="load" class="flex-item">Load tabs</div>
+  </div>
+  <div id="urls">
+    <textarea id="urls-str" rows="10" cols="80">&nbsp;</textarea><br/>
+    <button id="do-load" type="button">Load</button>
+  </div>
+</body>
+</html>
