@@ -1,13 +1,8 @@
 function copyTabs(e) {
-  chrome.tabs.query(
-    {},
-    function(tabsArray) {
-      var dump = '';
-      tabsArray.forEach(function(tab) {
-        dump = dump + '# ' + tab.title + '\n' + tab.url + '\n';
-      });
-      copyToClipboard(dump);
-    });
+  chrome.runtime.sendMessage({
+    from:    'popup',
+    subject: 'saveTabsList'
+  });
   window.close();
 }
 
@@ -31,7 +26,7 @@ function doLoading(e) {
   var strs = text.split(/\r?\n/);
   strs.forEach(function(str) {
     str = str.trim();
-    if (!str.startsWith("#")) {
+    if (str && !str.startsWith("#")) {
       chrome.tabs.create({ url: str });
     }
   });
